@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block main_section %}
+<section class="hero is-light is-fullheight-with-navbar index-gradient">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns">
+        <div class="column">
+          <img class="avatar" src="images/avatar.webp">
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-size-3 has-text-weight-bold">
+          {{ config.title }}
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-size-4">
+          {{ config.extra.subtitle }}
+        </div>
+      </div>
+      <div class="columns">
+        <div class="social column">
+          {% for social in config.extra.social %}
+            {% set icon = social.icon | default(value=social.name) | lower %}
+            <a href="{{ social.url | safe }}">
+              <span class="icon is-large">
+                <i class="fab fa-2x fa-{{ icon }}"></i>
+              </span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main_section %}

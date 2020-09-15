@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block header %}
+<div class="columns is-centered">
+  <div class="column is-8">
+    <h1 class="title">
+      <span class="icon is-medium">
+        {%block icon %}{% endblock icon %}
+      </span>
+      &nbsp;
+      {{ taxonomy.name | capitalize }}
+    </h1>
+  </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+{% for term in terms %}
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <a href="{{ term.permalink | safe }}">{{ term.name }}</a>
+      ({{ term.pages | length }})
+    </div>
+  </div>
+{% endfor %}
+{% endblock content %}

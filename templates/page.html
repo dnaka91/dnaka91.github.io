@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block header %}
+<div class="columns is-centered">
+  <div class="column is-8">
+    <h1 class="title">
+      {% if page.extra.icon %}
+        <span class="icon is-medium">
+          <i class="fas fa-fw fa-{{ page.extra.icon }}"></i>
+        </span>
+        &nbsp;
+      {% endif %}
+      {{ page.title }}
+    </h1>
+  </div>
+</div>
+
+{% if page.description %}
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <span class="subtitle">{{ page.description }}</span>
+    </div>
+  </div>
+{% endif %}
+
+{% if not page.extra.no_reading_time %}
+<div class="columns is-centered is-vcentered">
+  <div class="column is-offset-1 is-2 is-3-tablet">
+    <span class="subtitle">
+      <span class="icon is-medium">
+        <i class="fas fa-fw fa-clock"></i>
+      </span>
+      Reading time
+    </span>
+  </div>
+  <div class="column is-6 is-5-tablet">
+    <div class="tags">
+      <span class="tag is-white is-medium" href="#">{{ macros::duration(ts=page.reading_time) }}</span>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% for kind, values in page.taxonomies %}
+  <div class="columns is-centered is-vcentered">
+    <div class="column is-offset-1 is-2 is-3-tablet">
+      <span class="subtitle">
+        <span class="icon is-medium">
+          <i class="fas fa-fw {{ macros::taxo_icon(t=kind) }}"></i>
+        </span>
+        {{ kind | title }}
+      </span>
+    </div>
+    <div class="column is-6 is-5-tablet">
+      <div class="tags">
+        {% for value in values %}
+          <a class="tag is-dark is-medium" href="{{ get_taxonomy_url(kind=kind, name=value) | safe }}">{{ value }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% endblock header %}
+
+{% block content %}
+<div class="columns is-centered">
+  <div class="content column is-8">
+    {% if page.extra.toc %}
+      <h2>Table of contents</h2>
+      {{ macros::toc(headers=page.toc) }}
+    {% endif %}
+
+    {{ page.content | safe }}
+  </div>
+</div>
+{% endblock content %}

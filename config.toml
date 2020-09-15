@@ -1,0 +1,38 @@
+# The URL the site will be built for
+base_url = "/"
+
+title = "Dominik Nakamura"
+description = "Dominik Nakamura's personal website"
+
+# theme = "sam"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "one-dark"
+
+generate_feed = true
+
+taxonomies = [
+    { name = "tags", feed = true },
+    { name = "categories", feed = true },
+]
+
+[extra]
+subtitle = "Backend Developer in Go, Rust and Kotlin"
+
+menu = [
+    { text = "About", link = "/about" },
+    { text = "Projects", link = "/projects" },
+]
+
+social = [
+    { name = "Github", url = "https://github.com/dnaka91" },
+    { name = "Mastodon", url = "https://mastodon.technology/@dnaka91" },
+    { name = "LinkedIn", url = "https://linkedin.com/in/dominik-nakamura" },
+    { name = "Dev.to", url = "https://dev.to/dnaka91", icon = "dev" },
+    { name = "Medium", url = "https://medium.com/@dnaka91" },
+]

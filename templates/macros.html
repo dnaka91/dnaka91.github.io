@@ -1,0 +1,41 @@
+{% macro title_or_last(component) %}
+  {% set name = component.components | last %}
+  {{ component.title | default(value=name) | capitalize }}
+{% endmacro title_or_last %}
+
+{% macro format_date(date) %}
+  {% set date_format = config.extra.date_format | default(value="%Y / %m / %d") %}
+  {{ date | date(format=date_format) }}
+{% endmacro format_date %}
+
+{% macro toc(headers) %}
+  <ul>
+    {% for h in headers %}
+      <li>
+        <a href="{{ h.permalink | safe }}">{{ h.title }}</a>
+        {% if h.children %}
+          {{ self::toc(headers=h.children) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro toc %}
+
+{% macro taxo_icon(t) %}
+  {% if t == "tags" -%}
+    {{ "fa-tags" }}
+  {%- elif t == "categories" -%}
+    {{ "fa-folder-open" }}
+  {%- else -%}
+    {{ "" }}
+  {%- endif -%}
+{% endmacro taxo_icon %}
+
+{% macro duration(ts) %}
+  {% if ts >= 60 %}
+    {{ ts/60 | round(method="floor") }} hour{% if ts/60 >= 2 %}s{% endif %}
+  {% endif %}
+  {% if ts%60 >= 1 %}
+    {{ ts%60 | round(method="floor") }} minute{% if ts%60 >= 2 %}s{% endif %}
+  {% endif %}
+{% endmacro duration %}

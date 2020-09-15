@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block header %}
+<div class="columns is-centered">
+  <div class="column is-8">
+    <h1 class="title">
+      <span class="icon is-medium">
+        <i class="fas fa-fw fa-feather"></i>
+      </span>
+      &nbsp;
+      {{ macros::title_or_last(component=section) }}
+    </h1>
+  </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="content">
+{% for page in section.pages %}
+  <div class="columns is-centered">
+    <div class="column is-2">
+      {% if page.date %}
+        <h5>{{ macros::format_date(date=page.date) }}</h5>
+      {% endif %}
+    </div>
+    <div class="column is-6">
+      <h5><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h5>
+      {% if page.description %}
+        <p>{{ page.description }}</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock content %}
