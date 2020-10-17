@@ -1,6 +1,6 @@
-FROM fedora:33 as builder
+FROM linuxbrew/brew as builder
 
-RUN dnf install -y zola
+RUN brew install zola
 
 WORKDIR /web
 
@@ -12,6 +12,6 @@ COPY config.toml .
 
 RUN zola build
 
-FROM caddy/caddy:alpine
+FROM caddy:alpine
 
 COPY --from=builder /web/public/ /usr/share/caddy/
