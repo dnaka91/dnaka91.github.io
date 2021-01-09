@@ -34,5 +34,4 @@ social = [
     { name = "Mastodon", url = "https://mastodon.technology/@dnaka91" },
     { name = "LinkedIn", url = "https://linkedin.com/in/dominik-nakamura" },
     { name = "Dev.to", url = "https://dev.to/dnaka91", icon = "dev" },
-    { name = "Medium", url = "https://medium.com/@dnaka91" },
 ]
