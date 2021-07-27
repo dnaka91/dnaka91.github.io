@@ -1,4 +1,4 @@
-FROM linuxbrew/brew as builder
+FROM linuxbrew/brew:3.2.5 as builder
 
 RUN brew install zola
 
