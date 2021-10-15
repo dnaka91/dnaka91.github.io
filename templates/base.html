@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="referrer" content="no-referrer">
 
+    {% block meta %}
+    {% endblock meta %}
+
     <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
 
     <script type="text/javascript" src="{{ get_url(path='js/navbar.js') | safe }}"></script>
