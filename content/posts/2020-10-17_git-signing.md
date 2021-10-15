@@ -6,6 +6,7 @@ tags = ["gpg", "git", "github"]
 
 [extra]
 toc = true
+image = "7BhTfoKsheQ"
 +++
 
 ## Why signing
