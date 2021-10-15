@@ -1,5 +1,9 @@
 +++
 title = "Create a Ed25519 GPG key with sub-keys for Git signing"
+description = """
+How to create a GPG key with Ed25519 elliptic curve and sub-keys for each of your device to sign
+your Git commits.
+"""
 
 [taxonomies]
 tags = ["gpg", "git", "github"]
