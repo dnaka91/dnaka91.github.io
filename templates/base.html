@@ -1,7 +1,7 @@
 {% import "macros.html" as macros %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,15 +10,23 @@
     {% block meta %}
     {% endblock meta %}
 
-    <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
+    <link rel="preload" href="{{ get_url(path='style.css') | safe }}" as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
+    </noscript>
 
-    <script type="text/javascript" src="{{ get_url(path='js/navbar.js') | safe }}"></script>
+    <script type="text/javascript" src="{{ get_url(path='js/navbar.js') | safe }}" async></script>
 
     <title>{{ config.title }}</title>
 
     {% include "favicon.html" %}
 
     {% block extra_headers %}
+    <meta name="description" content="{{ config.description }}">
+    <meta name="author" content="Dominik Nakamura">
+    <meta name="copyright" content="Copyright (c) Dominik Nakamura">
+
     <link rel="alternate" type="application/atom+xml" href="{{ get_url(path='atom.xml') | safe }}"
       title="{{ config.title }}">
     {% endblock extra_headers %}

@@ -8,7 +8,7 @@
     <div class="container has-text-centered">
       <div class="columns">
         <div class="column">
-          <img class="avatar" src="images/avatar.webp">
+          <img class="avatar" src="images/avatar.webp" alt="avatar">
         </div>
       </div>
       <div class="columns">
@@ -25,7 +25,7 @@
         <div class="social column">
           {% for social in config.extra.social %}
             {% set icon = social.icon | default(value=social.name) | lower %}
-            <a href="{{ social.url | safe }}">
+            <a href="{{ social.url | safe }}" aria-label="{{ social.name }}">
               <span class="icon is-large">
                 <i class="fab fa-2x fa-{{ icon }}"></i>
               </span>
