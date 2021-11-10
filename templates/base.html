@@ -10,11 +10,7 @@
     {% block meta %}
     {% endblock meta %}
 
-    <link rel="preload" href="{{ get_url(path='style.css') | safe }}" as="style"
-      onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-      <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
-    </noscript>
+    <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
 
     <script type="text/javascript" src="{{ get_url(path='js/navbar.js') | safe }}" async></script>
 
