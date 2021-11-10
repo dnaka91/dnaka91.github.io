@@ -7,3 +7,6 @@ ZOLA_VERSION = "0.14.0"
 
 [context.deploy-preview]
 command = "zola build --base-url $DEPLOY_PRIME_URL"
+
+[context.production]
+command = "zola build --base-url https://home.dnaka91.rocks"
