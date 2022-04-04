@@ -60,7 +60,7 @@
     <h1 class="title">
       {% if page.extra.icon %}
         <span class="icon is-medium">
-          <i class="fas fa-fw fa-{{ page.extra.icon }}"></i>
+          <i class="fa-solid fa-fw fa-{{ page.extra.icon }}"></i>
         </span>
         &nbsp;
       {% endif %}
@@ -82,7 +82,7 @@
   <div class="column is-offset-1 is-2 is-3-tablet">
     <span class="subtitle">
       <span class="icon is-medium">
-        <i class="fas fa-fw fa-clock"></i>
+        <i class="fa-solid fa-fw fa-clock"></i>
       </span>
       Reading time
     </span>
@@ -100,7 +100,7 @@
     <div class="column is-offset-1 is-2 is-3-tablet">
       <span class="subtitle">
         <span class="icon is-medium">
-          <i class="fas fa-fw {{ macros::taxo_icon(t=kind) }}"></i>
+          <i class="fa-solid fa-fw {{ macros::taxo_icon(t=kind) }}"></i>
         </span>
         {{ kind | title }}
       </span>
