@@ -1,0 +1,53 @@
+<div class="block card">
+  <header class="card-header">
+    <p id="project-{{ name }}" class="card-header-title">{{ emoji }} {{ name }}</p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <div>
+        {% if ci %}
+        <a href="https://github.com/dnaka91/{{ name }}/actions/workflows/{{ ci | lower }}.yml">
+          <img src="https://img.shields.io/github/workflow/status/dnaka91/{{ name }}/{{ ci }}/{{ ci_branch | default(value="main") }}?style=for-the-badge">
+        </a>
+        {% endif %}
+        {% if crate %}
+        <a href="https://crates.io/crates/{{ name }}">
+          <img src="https://img.shields.io/crates/v/{{ name }}?style=for-the-badge">
+        </a>
+        <a href="https://docs.rs/{{ name }}">
+          <img src="https://img.shields.io/badge/docs.rs-{{ name }}-4d76ae?style=for-the-badge">
+        </a>
+        {% endif %}
+        {% if coverage %}
+        <a href="https://dnaka91.github.io/{{ name }}">
+          <img src="https://img.shields.io/endpoint?url=https://dnaka91.github.io/{{ name }}/coverage.json&style=for-the-badge">
+        </a>
+        {% endif %}
+      </div>
+
+      {{ body | markdown(inline=true) | safe }}
+    </div>
+  </div>
+  <div class="card-footer">
+    {% if homepage %}
+    <a href="{{ homepage }}" class="card-footer-item">
+      <span class="icon">
+        <i class="fa-brands fa-fw fa-firefox-browser"></i>
+      </span>
+      Homepage
+    </a>
+    {% endif %}
+    <a href="https://github.com/dnaka91/{{ name }}" class="card-footer-item">
+      <span class="icon">
+        <i class="fa-brands fa-fw fa-github"></i>
+      </span>
+      GitHub
+    </a>
+    <a href="https://github.com/dnaka91/{{ name }}/blob/{{ branch | default(value="main") }}/LICENSE" class="card-footer-item">
+      <span class="icon">
+        <i class="fa-solid fa-fw fa-scale-balanced"></i>
+      </span>
+      {{ license }}
+    </a>
+  </div>
+</div>

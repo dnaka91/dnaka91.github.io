@@ -5,14 +5,61 @@ slug = "projects"
 [extra]
 icon = "rocket"
 no_reading_time = true
+toc = true
 +++
 
-## 📼 Findstream
+## 📦 Libaries
 
-[findstream_home]: https://findstream.dnaka91.rocks
-[findstream_repo]: https://github.com/dnaka91/findstream
+{% project(
+    name="chronver",
+    emoji="⏰",
+    license="MIT",
+    ci="CI",
+    crate=true
+) %}
+    chronver
+{% end %}
 
-**[ 🦀 Rust • [Homepage][findstream_home] • [Repository][findstream_repo] ]**
+{% project(
+    name="obws",
+    emoji="🕹️",
+    license="MIT",
+    ci="CI",
+    crate=true,
+    coverage=true
+) %}
+    obws
+{% end %}
+
+{% project(
+    name="unidirs",
+    emoji="🗃",
+    license="MIT",
+    ci="CI",
+    crate=true
+) %}
+    unidirs
+{% end %}
+
+## 🚀 Servers
+
+{% project(
+    name="asgard",
+    emoji="🌋",
+    license="AGPL-3.0",
+    homepage="https://asgard.dnaka91.rocks",
+    ci="CI"
+) %}
+    asgard
+{% end %}
+
+{% project(
+    name="findstream",
+    emoji="📼",
+    license="AGPL-3.0",
+    homepage="https://findstream.dnaka91.rocks",
+    ci="CI"
+) %}
 
 Findstream is a better search for [Twitch](https://twitch.tv) that allows to search directly in
 stream titles. This doesn't matter for specific games but is very helpful for variety categories
@@ -22,23 +69,44 @@ single category.
 For example, you can search for _Rust_ in _Science & Technology_ with this project, allowing you to
 filter within the category itself which Twitch doesn't support currently.
 
-## 🗳 Veto
+{% end %}
 
-[veto_repo]: https://github.com/dnaka91/veto
+{% project(
+    name="marmalade",
+    emoji="🍞",
+    license="AGPL-3.0",
+    homepage="https://marmalade.dnaka91.rocks",
+    ci="CI"
+) %}
+    marmalade
+{% end %}
 
-**[ 🦀 Rust • [Repository][veto_repo] ]**
+<!--
+{% project(
+    name="twitchid",
+    emoji="🏷️",
+    license="AGPL-3.0"
+) %}
+    twitchid
+{% end %}
+-->
 
-Veto is a log file based IP blocker that runs as a service on the system, tracks one or more log
-files and blocks IPs based on the log lines and rules defined by the user.
+## 🧰 Tools
 
-I started with this project as I was using fail2ban previously but noticed during load tests that it
-took about 60% of my server's CPU and I wanted something more lean and fast.
+{% project(
+    name="cargo-hatch",
+    emoji="🐣",
+    license="AGPL-3.0"
+) %}
+    cargo-hatch
+{% end %}
 
-## 🧱 Ipwall
-
-[ipwall_repo]: https://github.com/dnaka91/ipwall
-
-**[ 🦀 Rust • [Repository][ipwall_repo] ]**
+{% project(
+    name="ipwall",
+    emoji="🧱",
+    license="AGPL-3.0",
+    ci="CI"
+) %}
 
 Ipwall is a very simple tool to download a selection of IP blacklists and apply them to your
 _iptables/ipset_ rules. It uses the [FireHOL](https://iplists.firehol.org/) level 1-3 blacklists but
@@ -47,33 +115,103 @@ can be configured to include additional lists as well.
 It is meant as a companion to [Veto](#ballot-box-veto) to apply common bad IP blocks in addition to
 the dynamic blocking of it.
 
-<!--
-## 🌋 Crator
+{% end %}
 
-[crator_home]: https://crator.dnaka91.rocks
-[crator_repo]: https://github.com/dnaka91/crator
+{% project(
+    name="otti",
+    emoji="🦦",
+    license="AGPL-3.0",
+    ci="CI"
+) %}
+    otti
+{% end %}
 
-**[ 🦀 Rust • [Homepage][crator_home] • [Repository][crator_repo] ]**
--->
+{% project(
+    name="twitchat",
+    emoji="🗨",
+    license="AGPL-3.0",
+    homepage="https://dnaka91.github.io/twitchat",
+    ci="CI"
+) %}
+    twitchat
+{% end %}
 
-## Amelio
+{% project(
+    name="veto",
+    emoji="🗳",
+    license="AGPL-3.0",
+    ci="CI"
+) %}
 
-[amelio_home]: https://amelio.dnaka91.rocks
-[amelio_repo]: https://github.com/dnaka91/amelio
+Veto is a log file based IP blocker that runs as a service on the system, tracks one or more log
+files and blocks IPs based on the log lines and rules defined by the user.
 
-**[ 🦀 Rust • [Homepage][amelio_home] • [Repository][amelio_repo] ]**
+I started with this project as I was using fail2ban previously but noticed during load tests that it
+took about 60% of my server's CPU and I wanted something more lean and fast.
+
+{% end %}
+
+{% project(
+    name="wholesum",
+    emoji="🥧",
+    license="AGPL-3.0",
+    ci="CI"
+) %}
+    wholesum
+{% end %}
+
+## 🤖 Bots
+
+{% project(
+    name="octolicious",
+    emoji="🍭",
+    license="AGPL-3.0",
+    ci="CI"
+) %}
+    octolicious
+{% end %}
+
+{% project(
+    name="togglebot",
+    emoji="🤖",
+    license="AGPL-3.0",
+    ci="CI"
+) %}
+    togglebot
+{% end %}
+
+## 🫖 Others
+
+{% project(
+    name="amelio",
+    emoji="",
+    license="AGPL-3.0",
+    homepage="https://amelio.dnaka91.rocks",
+    branch="master",
+    ci="CI",
+    ci_branch="master"
+) %}
 
 Amelio is a group project for the IUBH University in Germany. It is a ticket system that helps to
 report and track errors in study media.
 
-<!--
-## ⏱️ Chronver
+{% end %}
 
-[chronver_home]: https://chronver.org
-[chronver_repo]: https://github.com/dnaka91/chronver
+{% project(
+    name="beatfly",
+    emoji="",
+    license="AGPL-3.0",
+    branch="master",
+) %}
 
-**[ 🦀 Rust • [Homepage][chronver_home] • [Repository][chronver_repo] ]**
--->
+BeatFly is a university project that showcases an application for a radio station. It doesn't have
+a server to communicate with, so it emulates one acting like a fully working app. Main features
+include playing music (obviously) and reviewing and wishing songs.
+
+This app uses the latest Android features (at time of creation) and is completely written in
+🍵 Kotlin. Among the used libraries are AndroidX, Dagger, Moshi, Glide and others.
+
+{% end %}
 
 <!--
 ## MarkDown Publisher
@@ -91,6 +229,7 @@ This is a helpful tool for anyone who wants to publish posts on their own websit
 get effects of publishing on other platforms to become more known.
 -->
 
+<!--
 ## CRC Check
 
 [crccheck_repo]: https://github.com/dnaka91/crccheck-rs
@@ -102,19 +241,7 @@ any files that contain a hash, calculates the hash from their content and compar
 verify the content wasn't modified.
 
 It optionally can update the hash if it doesn't match.
-
-## BeatFly
-
-[beatfly_repo]: https://github.com/dnaka91/beatfly
-
-**[ 🤖 Android/Kotlin • [Repository][beatfly_repo] ]**
-
-BeatFly is a university project that showcases an application for a radio station. It doesn't have
-a server to communicate with, so it emulates one acting like a fully working app. Main features
-include playing music (obviously) and reviewing and wishing songs.
-
-This app uses the latest Android features (at time of creation) and is completely written in
-🍵 Kotlin. Among the used libraries are AndroidX, Dagger, Moshi, Glide and others.
+-->
 
 <!--
 ## Reciply
