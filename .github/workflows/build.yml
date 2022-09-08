@@ -6,18 +6,15 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      ZOLA_VERSION: 0.16.1
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Install Zola
-        env:
-          VERSION: 0.16.1
-        run: |
-          mkdir -p $HOME/.local/zola
-          echo "$HOME/.local/zola" >> $GITHUB_PATH
-          curl -LsSf https://github.com/getzola/zola/releases/download/v${VERSION}/zola-v$VERSION-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C $HOME/.local/zola
+        run: docker pull ghcr.io/getzola/zola:v${ZOLA_VERSION}
       - name: Build website
-        run: zola build
+        run: docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app ghcr.io/getzola/zola:v${ZOLA_VERSION} build
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3
         with:
