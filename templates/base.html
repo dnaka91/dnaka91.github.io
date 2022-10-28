@@ -10,11 +10,10 @@
     {% block meta %}
     {% endblock meta %}
 
+    <link rel="icon" href="{{ get_url(path='images/favicon.svg') | safe }}">
     <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
 
     <title>{{ config.title }}</title>
-
-    {% include "favicon.html" %}
 
     {% block extra_headers %}
     <meta name="description" content="{{ config.description }}">
