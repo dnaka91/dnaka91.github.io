@@ -201,7 +201,7 @@ report and track errors in study media.
     name="beatfly",
     emoji="",
     license="AGPL-3.0",
-    branch="master",
+    branch="master"
 ) %}
 
 BeatFly is a university project that showcases an application for a radio station. It doesn't have
