@@ -7,7 +7,7 @@
       <div>
         {% if ci %}
         <a href="https://github.com/dnaka91/{{ name }}/actions/workflows/{{ ci | lower }}.yml">
-          <img src="https://img.shields.io/github/workflow/status/dnaka91/{{ name }}/{{ ci }}/{{ ci_branch | default(value="main") }}?style=for-the-badge">
+          <img src="https://img.shields.io/github/actions/workflow/status/dnaka91/{{ name }}/{{ ci | lower }}.yml?branch={{ ci_branch | default(value="main") }}&style=for-the-badge">
         </a>
         {% endif %}
         {% if crate %}
