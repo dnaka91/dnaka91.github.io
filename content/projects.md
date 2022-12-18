@@ -1,6 +1,9 @@
 +++
 title = "Projects"
 slug = "projects"
+description = """
+These are all my publicly available projects, categorized by their kind. They are not in any specific order. Feel free to try them out, and if you find any issues, please open an issue on the respective issue tracker.
+"""
 
 [extra]
 icon = "rocket"
@@ -9,6 +12,8 @@ toc = true
 +++
 
 ## 📦 Libraries
+
+Software libraries that can be used by others (mostly Rust crates).
 
 {% project(
     name="chronver",
@@ -42,6 +47,8 @@ toc = true
 {% end %}
 
 ## 🚀 Servers
+
+Server components that can be run locally or hosted somewhere.
 
 {% project(
     name="asgard",
@@ -92,6 +99,8 @@ filter within the category itself which Twitch doesn't support currently.
 -->
 
 ## 🧰 Tools
+
+Utility applications, mostly for the command line.
 
 {% project(
     name="cargo-hatch",
@@ -162,6 +171,8 @@ took about 60% of my server's CPU and I wanted something more lean and fast.
 
 ## 🤖 Bots
 
+Chat bots, usually for **Discord**.
+
 {% project(
     name="octolicious",
     emoji="🍭",
@@ -181,6 +192,8 @@ took about 60% of my server's CPU and I wanted something more lean and fast.
 {% end %}
 
 ## 🫖 Others
+
+Pretty much anything else that doesn't fit into the other categories.
 
 {% project(
     name="amelio",
