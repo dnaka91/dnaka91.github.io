@@ -8,7 +8,7 @@ no_reading_time = true
 toc = true
 +++
 
-## 📦 Libaries
+## 📦 Libraries
 
 {% project(
     name="chronver",
