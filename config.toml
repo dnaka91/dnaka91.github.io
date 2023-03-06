@@ -35,8 +35,8 @@ menu = [
 social = [
     { name = "Github", url = "https://github.com/dnaka91" },
     { name = "Discord", url = "https://discord.gg/phxGsW8dWd" },
-    { name = "Mastodon", url = "https://mastodon.technology/@dnaka91" },
-    { name = "LinkedIn", url = "https://linkedin.com/in/dominik-nakamura" },
+    { name = "Mastodon", url = "https://fosstodon.org/@dnaka91" },
+    { name = "LinkedIn", url = "https://www.linkedin.com/in/dominik-nakamura" },
     { name = "Guilded", url = "https://www.guilded.gg/i/pB13lNPk" },
     { name = "Dev.to", url = "https://dev.to/dnaka91", icon = "dev" },
 ]
