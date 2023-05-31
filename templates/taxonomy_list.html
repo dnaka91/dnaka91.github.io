@@ -7,7 +7,7 @@
   <div class="column is-8">
     <h1 class="title">
       <span class="icon is-medium">
-        {%block icon %}{% endblock icon %}
+        <i class="fa-solid fa-fw {{ config.extra.taxonomy_icons[taxonomy.name] }}"></i>
       </span>
       &nbsp;
       {{ taxonomy.name | capitalize }}

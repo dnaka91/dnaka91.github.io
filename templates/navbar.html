@@ -2,25 +2,48 @@
 
 <nav class="navbar is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item is-size-5 is-uppercase has-text-weight-bold" href="{{ config.base_url | safe }}">
+    <a class="navbar-item is-size-5 is-uppercase has-text-weight-bold" href="{{ get_url(path='/', lang=lang) | safe }}">
       {{ config.title }}
     </a>
   </div>
 
   <div class="navbar-end">
-    <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="/posts/">Posts</a>
+    {%- if lang == config.default_language %}
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="{{ get_url(path='@/posts/_index.md', lang=lang) }}">{{ trans(key="menu_posts", lang=lang) }}</a>
 
-      <div class="navbar-dropdown is-boxed">
-        {% for taxo in config.taxonomies %}
-          <a class="navbar-item" href="/{{ taxo.name }}/">{{ taxo.name | capitalize }}</a>
-        {% endfor %}
+        <div class="navbar-dropdown is-boxed">
+          {%- for taxo in config.taxonomies %}
+            {%- set detail = get_taxonomy(kind=taxo.name, lang=lang) %}
+            <a class="navbar-item" href="{{ detail.permalink | safe }}">{{ trans(key="taxonomy_" ~ taxo.name, lang=lang) }}</a>
+          {%- endfor %}
+        </div>
+      </div>
+    {%- endif %}
+
+    {% if lang == config.default_language %}
+      {% set index = get_section(path="_index.md") %}
+    {% else %}
+      {% set index = get_section(path="_index." ~ lang ~ ".md") %}
+    {% endif %}
+    {% for page in index.pages | sort(attribute="slug") %}
+      <a class="navbar-item" href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    {% endfor %}
+
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">{{ trans(key="menu_language", lang=lang) }}</a>
+
+        <div class="navbar-dropdown is-boxed">
+          {%- for code, _ in config.languages %}
+            {%- set lang_url = current_path | trim_start_matches(pat='/' ~ lang) | trim_start_matches(pat='/') %}
+            <a class="navbar-item" href="{{ get_url(path=lang_url, lang=code) }}">
+              {{- trans(key="language_name", lang=code) -}}
+            </a>
+          {%- endfor %}
+        </div>
       </div>
     </div>
-
-    {% for link in config.extra.menu %}
-      <a class="navbar-item" href="{{ link.link | safe }}/">{{ link.text }}</a>
-    {% endfor %}
 
     <a class="navbar-item" href="https://liberapay.com/dnaka91/donate" target="_blank" rel="noreferrer">
       <img alt="Donate using Liberapay" src="{{ get_url(path='images/liberapay-donate.svg') | safe }}">

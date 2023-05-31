@@ -3,8 +3,8 @@
   {{ component.title | default(value=name) | capitalize }}
 {% endmacro title_or_last %}
 
-{% macro format_date(date) %}
-  {% set date_format = config.extra.date_format | default(value="%Y / %m / %d") %}
+{% macro format_date(date, lang) %}
+  {% set date_format = trans(key="date_format", lang=lang) %}
   {{ date | date(format=date_format) }}
 {% endmacro format_date %}
 

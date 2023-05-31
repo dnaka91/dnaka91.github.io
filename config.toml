@@ -4,15 +4,17 @@ base_url = "/"
 title = "Dominik Nakamura"
 description = "Dominik Nakamura's personal website"
 
+default_language = "en"
+
+compile_sass = true
+minify_html = true
+
 generate_feed = true
 
 taxonomies = [
     { name = "tags", feed = true },
     { name = "categories", feed = true },
 ]
-
-compile_sass = true
-minify_html = true
 
 [markdown]
 highlight_code = true
@@ -25,13 +27,6 @@ external_links_no_referrer = true
 smart_punctuation = true
 
 [extra]
-subtitle = "Backend Developer in Go, Rust and Kotlin"
-
-menu = [
-    { text = "About", link = "/about" },
-    { text = "Projects", link = "/projects" },
-]
-
 social = [
     { name = "Github", url = "https://github.com/dnaka91" },
     { name = "Discord", url = "https://discord.gg/phxGsW8dWd" },
@@ -39,3 +34,42 @@ social = [
     { name = "LinkedIn", url = "https://www.linkedin.com/in/dominik-nakamura" },
     { name = "Dev.to", url = "https://dev.to/dnaka91", icon = "dev" },
 ]
+
+[extra.taxonomy_icons]
+tags = "fa-tags"
+categories = "fa-folder-open"
+
+[translations]
+subtitle = "Backend Developer in Go, Rust and Kotlin"
+
+language_name = "English"
+date_format = "%Y / %m / %d"
+
+menu_posts = "Posts"
+menu_language = "Language"
+
+taxonomy_tags = "Tags"
+taxonomy_categories = "Categories"
+
+[languages.de]
+title = "Dominik Nakamura"
+description = "Dominik Nakamuras persönliche Webseite"
+
+generate_feed = false
+
+taxonomies = [
+    { name = "tags", feed = true },
+    { name = "categories", feed = true },
+]
+
+[languages.de.translations]
+subtitle = "Backend Softwareentwickler in Go, Rust und Kotlin"
+
+language_name = "Deutsch"
+date_format = "%d.%m.%Y"
+
+menu_posts = "Artikel"
+menu_language = "Sprache"
+
+taxonomy_tags = "Tags"
+taxonomy_categories = "Kategorien"
