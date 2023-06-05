@@ -12,7 +12,7 @@
   <ul>
     {% for h in headers %}
       <li>
-        <a class="no-underline hover:text-blue-500 hover:underline" href="{{ h.permalink | safe }}">{{ h.title }}</a>
+        <a class="hover:text-blue-500" href="{{ h.permalink | safe }}">{{ h.title }}</a>
         {% if h.children %}
           {{ self::toc(headers=h.children) }}
         {% endif %}
