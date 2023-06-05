@@ -26,7 +26,9 @@
     {% endblock extra_headers %}
   </head>
   <body class="font-serif bg-zinc-200 text-zinc-900 print:bg-white dark:bg-zinc-800 dark:text-zinc-100">
+    {% block nav %}
     {% include "navbar.html" %}
+    {% endblock nav %}
     {% block main_section %}
     <section class="py-8 bg-zinc-100 dark:bg-zinc-900 {% if page and page.slug == 'resume' %}print:hidden{% endif %}">
       <div class="container mx-auto">
