@@ -1,52 +1,57 @@
 {% import "macros.html" as macros %}
 
-<nav class="navbar is-black" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item is-size-5 is-uppercase has-text-weight-bold" href="{{ get_url(path='/', lang=lang) | safe }}">
-      {{ config.title }}
-    </a>
-  </div>
+<nav class="flex flex-col items-stretch md:flex-row bg-zinc-100 print:hidden dark:bg-zinc-900" role="navigation">
+  <a class="py-2 px-2 my-auto font-bold uppercase md:py-3" href="{{ get_url(path='/', lang=lang) | safe }}">
+    {{ config.title }}
+  </a>
 
-  <div class="navbar-end">
-    {%- if lang == config.default_language %}
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="{{ get_url(path='@/posts/_index.md', lang=lang) }}">{{ trans(key="menu_posts", lang=lang) }}</a>
+  <div class="grow"></div>
 
-        <div class="navbar-dropdown is-boxed">
-          {%- for taxo in config.taxonomies %}
-            {%- set detail = get_taxonomy(kind=taxo.name, lang=lang) %}
-            <a class="navbar-item" href="{{ detail.permalink | safe }}">{{ trans(key="taxonomy_" ~ taxo.name, lang=lang) }}</a>
-          {%- endfor %}
-        </div>
+  {%- if lang == config.default_language %}
+    <div class="relative py-2 px-4 md:py-3 group dark:hover:bg-zinc-500 hover:bg-zinc-300">
+      <div class="flex flex-row gap-x-1 items-center">
+        <a href="{{ get_url(path='@/posts/_index.md', lang=lang) }}">{{ trans(key="menu_posts", lang=lang) }}</a>
+        {{ macros::icon(name="chevron-down", class="w-4 h-4") }}
       </div>
-    {%- endif %}
-
-    {% if lang == config.default_language %}
-      {% set index = get_section(path="_index.md") %}
-    {% else %}
-      {% set index = get_section(path="_index." ~ lang ~ ".md") %}
-    {% endif %}
-    {% for page in index.pages | sort(attribute="slug") %}
-      <a class="navbar-item" href="{{ page.permalink | safe }}">{{ page.title }}</a>
-    {% endfor %}
-
-    <div class="navbar-end">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">{{ trans(key="menu_language", lang=lang) }}</a>
-
-        <div class="navbar-dropdown is-boxed">
-          {%- for code, _ in config.languages %}
-            {%- set lang_url = current_path | trim_start_matches(pat='/' ~ lang) | trim_start_matches(pat='/') %}
-            <a class="navbar-item" href="{{ get_url(path=lang_url, lang=code) }}">
-              {{- trans(key="language_name", lang=code) -}}
-            </a>
-          {%- endfor %}
-        </div>
+      <div class="flex flex-col p-1 mt-2 rounded-md shadow md:hidden md:absolute md:p-2 md:mt-0 group-hover:flex bg-zinc-200 dark:bg-zinc-700">
+        {%- for taxo in config.taxonomies %}
+          {%- set detail = get_taxonomy(kind=taxo.name, lang=lang) %}
+          <a class="p-1 rounded-md md:p-2 dark:hover:bg-zinc-500 hover:bg-zinc-300" href="{{ detail.permalink | safe }}">
+            {{ trans(key="taxonomy_" ~ taxo.name, lang=lang) }}
+          </a>
+        {%- endfor %}
       </div>
     </div>
+  {%- endif %}
 
-    <a class="navbar-item" href="https://liberapay.com/dnaka91/donate" target="_blank" rel="noreferrer">
-      <img alt="Donate using Liberapay" src="{{ get_url(path='images/liberapay-donate.svg') | safe }}">
+  {% if lang == config.default_language %}
+    {% set index = get_section(path="_index.md") %}
+  {% else %}
+    {% set index = get_section(path="_index." ~ lang ~ ".md") %}
+  {% endif %}
+  {% for page in index.pages | sort(attribute="slug") %}
+    <a class="flex items-center py-2 px-4 align-middle md:py-3 dark:hover:bg-zinc-500 hover:bg-zinc-300" href="{{ page.permalink | safe }}">
+      {{ page.title }}
     </a>
+  {% endfor %}
+
+  <div class="relative py-2 px-4 md:py-3 group dark:hover:bg-zinc-500 hover:bg-zinc-300">
+    <div class="flex flex-row gap-x-1 items-center">
+      <p>{{ trans(key="menu_language", lang=lang) }}</p>
+      {{ macros::icon(name="chevron-down", class="w-4 h-4") }}
+    </div>
+
+    <div class="flex flex-col p-1 mt-2 rounded-md shadow md:hidden md:absolute md:p-2 md:mt-0 group-hover:flex bg-zinc-200 dark:bg-zinc-700">
+      {%- for code, _ in config.languages %}
+        {%- set lang_url = current_path | trim_start_matches(pat='/' ~ lang) | trim_start_matches(pat='/') %}
+        <a class="p-1 rounded-md md:p-2 dark:hover:bg-zinc-500 hover:bg-zinc-300" href="{{ get_url(path=lang_url, lang=code) }}">
+          {{- trans(key="language_name", lang=code) -}}
+        </a>
+      {%- endfor %}
+    </div>
   </div>
+
+  <a class="flex items-center py-2 px-2 hover:bg-zinc-500" href="https://liberapay.com/dnaka91/donate" target="_blank" rel="noreferrer">
+    <img alt="Donate using Liberapay" src="{{ get_url(path='images/liberapay-donate.svg') | safe }}">
+  </a>
 </nav>

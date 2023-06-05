@@ -3,37 +3,23 @@
 {% import "macros.html" as macros %}
 
 {% block main_section %}
-<section class="hero is-light is-fullheight-with-navbar index-gradient">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <div class="columns">
-        <div class="column">
-          <img class="avatar" src="{{ get_url(path='images/avatar.webp') | safe }}" alt="avatar" width="160" height="160">
+<section class="flex flex-col gap-y-6 justify-center items-center w-full h-screen bg-gradient-to-br from-zinc-200 to-zinc-500 dark:from-zinc-600 dark:to-zinc-900">
+  <img class="mb-8 rounded-3xl" src="{{ get_url(path='images/avatar.webp') | safe }}" alt="avatar" width="160" height="160">
+  <div class="text-4xl font-bold">
+    {{ config.title }}
+  </div>
+  <div class="text-2xl">
+    {{ trans(key="subtitle", lang=lang) }}
+  </div>
+  <div class="flex gap-x-2">
+    {% for social in config.extra.social %}
+      {% set icon = social.icon | default(value=social.name) | lower %}
+      <a class="hover:text-blue-500 group text-zinc-700 dark:text-zinc-200 dark:hover:text-blue-500" href="{{ social.url | safe }}" aria-label="{{ social.name }}">
+        <div class="p-2 rounded-full dark:group-hover:bg-zinc-900/25 group-hover:bg-zinc-100/25">
+          {{ macros::social_icon(name=icon) }}
         </div>
-      </div>
-      <div class="columns">
-        <div class="column is-size-3 has-text-weight-bold">
-          {{ config.title }}
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-size-4">
-          {{ trans(key="subtitle", lang=lang) }}
-        </div>
-      </div>
-      <div class="columns">
-        <div class="social column">
-          {% for social in config.extra.social %}
-            {% set icon = social.icon | default(value=social.name) | lower %}
-            <a href="{{ social.url | safe }}" aria-label="{{ social.name }}">
-              <span class="icon is-large">
-                <i class="fab fa-2x fa-{{ icon }}"></i>
-              </span>
-            </a>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+      </a>
+    {% endfor %}
   </div>
 </section>
 {% endblock main_section %}

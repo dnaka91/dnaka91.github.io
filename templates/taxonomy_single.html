@@ -8,34 +8,28 @@
 {% endblock extra_headers %}
 
 {% block header %}
-<div class="columns is-centered">
-  <div class="column is-8">
-    <h1 class="title">
-      <span class="icon is-medium">
-        {%block icon %}{% endblock icon %}
-      </span>
-      &nbsp;
-      {{ taxonomy.name | capitalize }} / {{ term.name | capitalize }}
-    </h1>
-  </div>
-</div>
+<h1 class="flex flex-row gap-x-4 items-center text-4xl">
+  {{ macros::icon(name=config.extra.taxonomy_icons[taxonomy.name], class="w-8 h-8") }}
+  {{ taxonomy.name | capitalize }} / {{ term.name | capitalize }}
+</h1>
 {% endblock header %}
 
 {% block content %}
-<div class="content">
+<div class="my-8 prose prose-zinc dark:prose-invert">
 {% for page in term.pages %}
-  <div class="columns is-centered">
-    <div class="column is-2">
-      {% if page.date %}
-        <h5>{{ macros::format_date(date=page.date, lang=lang) }}</h5>
-      {% endif %}
+  <div>
+    <div class="flex flex-row">
+      <div class="w-32">
+        {% if page.date %}
+          {{ macros::format_date(date=page.date, lang=lang) }}
+        {% endif %}
+      </div>
+      <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
     </div>
-    <div class="column is-6">
-      <h5><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h5>
-      {% if page.description %}
-        <p>{{ page.description }}</p>
-      {% endif %}
-    </div>
+
+    {% if page.description %}
+      <p class="ml-32">{{ page.description }}</p>
+    {% endif %}
   </div>
 {% endfor %}
 </div>

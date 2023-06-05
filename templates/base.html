@@ -24,18 +24,16 @@
       title="{{ config.title }}">
     {% endblock extra_headers %}
   </head>
-  <body>
+  <body class="font-serif bg-zinc-200 text-zinc-900 print:bg-white dark:bg-zinc-800 dark:text-zinc-100">
     {% include "navbar.html" %}
     {% block main_section %}
-    <section class="hero is-black">
-      <div class="hero-body">
-        <div class="container">
-          {% block header %}{% endblock header %}
-        </div>
+    <section class="py-8 bg-zinc-100 dark:bg-zinc-900 {% if page and page.slug == 'resume' %}print:hidden{% endif %}">
+      <div class="container mx-auto">
+        {% block header %}{% endblock header %}
       </div>
     </section>
     <section class="section">
-      <div class="container">
+      <div class="container mx-auto">
         {% block content %}{% endblock content %}
       </div>
     </section>

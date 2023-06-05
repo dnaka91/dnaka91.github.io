@@ -1,2 +1,6 @@
+/node_modules
 /public
 /resources
+/static/style.css
+
+yarn-error.log

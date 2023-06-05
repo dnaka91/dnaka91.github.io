@@ -1,10 +1,11 @@
-<div class="block card">
-  <header class="card-header">
-    <p id="project-{{ name }}" class="card-header-title">{{ emoji }} {{ name }}</p>
-  </header>
-  <div class="card-content">
-    <div class="content">
-      <div>
+{% import "macros.html" as macros %}
+
+<div class="flex flex-col gap-y-4 p-4 my-4 rounded-lg divide-y shadow-lg bg-zinc-100 not-prose shadow-zinc-400 divide-zinc-400 dark:bg-zinc-700 dark:shadow-zinc-900 dark:divide-zinc-600">
+  <p id="project-{{ name }}" class="text-xl font-bold">{{ emoji }} {{ name }}</p>
+
+  <div class="pt-4 grow">
+    {% if ci or crate or coverage %}
+      <div class="flex flex-wrap gap-2 pb-4">
         {% if ci %}
         <a href="https://github.com/dnaka91/{{ name }}/actions/workflows/{{ ci | lower }}.yml">
           <img src="https://img.shields.io/github/actions/workflow/status/dnaka91/{{ name }}/{{ ci | lower }}.yml?branch={{ ci_branch | default(value="main") }}&style=for-the-badge">
@@ -24,29 +25,26 @@
         </a>
         {% endif %}
       </div>
+    {% endif %}
 
+    <div>
       {{ body | markdown(inline=true) | safe }}
     </div>
   </div>
-  <div class="card-footer">
+
+  <div class="flex flex-col gap-2 justify-between items-stretch pt-2 text-center md:flex-row">
     {% if homepage %}
-    <a href="{{ homepage }}" class="card-footer-item">
-      <span class="icon">
-        <i class="fa-brands fa-fw fa-firefox-browser"></i>
-      </span>
-      Homepage
-    </a>
+      <a class="flex justify-center items-center py-2 px-4 rounded-md hover:text-blue-500 grow dark:hover:bg-zinc-600 hover:bg-zinc-200" href="{{ homepage }}">
+        {{ macros::social_icon(name="firefox-browser", class="w-4 h-4 me-1") }}
+        Homepage
+      </a>
     {% endif %}
-    <a href="https://github.com/dnaka91/{{ name }}" class="card-footer-item">
-      <span class="icon">
-        <i class="fa-brands fa-fw fa-github"></i>
-      </span>
+    <a class="flex justify-center items-center py-2 px-4 rounded-md hover:text-blue-500 grow dark:hover:bg-zinc-600 hover:bg-zinc-200" href="https://github.com/dnaka91/{{ name }}">
+      {{ macros::social_icon(name="github", class="w-4 h-4 me-1") }}
       GitHub
     </a>
-    <a href="https://github.com/dnaka91/{{ name }}/blob/{{ branch | default(value="main") }}/LICENSE" class="card-footer-item">
-      <span class="icon">
-        <i class="fa-solid fa-fw fa-scale-balanced"></i>
-      </span>
+    <a class="flex justify-center items-center py-2 px-4 rounded-md hover:text-blue-500 grow dark:hover:bg-zinc-600 hover:bg-zinc-200" href="https://github.com/dnaka91/{{ name }}/blob/{{ branch | default(value="main") }}/LICENSE">
+      {{ macros::icon(name="scale", class="w-4 h-4 me-1") }}
       {{ license }}
     </a>
   </div>

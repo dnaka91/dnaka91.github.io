@@ -1,0 +1,17 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "repository": "https://github.com/dnaka91/website",
+  "author": "Dominik Nakamura <dnaka91@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "tailwind": "tailwindcss -i ./input.css -o ./static/style.css",
+    "watch": "yarn run tailwind --watch",
+    "build": "yarn run tailwind --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "tailwindcss": "^3.3.2"
+  }
+}

@@ -6,15 +6,18 @@ These are all my publicly available projects, categorized by their kind. They ar
 """
 
 [extra]
-icon = "rocket"
+icon = "rocket-launch"
 no_reading_time = true
 toc = true
 +++
+
+<!-- markdownlint-disable link-fragments no-bare-urls no-inline-html -->
 
 ## 📦 Libraries
 
 Software libraries that can be used by others (mostly Rust crates).
 
+<div class="xl:grid grid-cols-2 gap-x-4">
 {% project(
     name="chronver",
     emoji="⏰",
@@ -45,11 +48,13 @@ Software libraries that can be used by others (mostly Rust crates).
 ) %}
     unidirs
 {% end %}
+</div>
 
 ## 🚀 Servers
 
 Server components that can be run locally or hosted somewhere.
 
+<div class="xl:grid grid-cols-2 gap-x-4">
 {% project(
     name="asgard",
     emoji="🌋",
@@ -87,21 +92,13 @@ filter within the category itself which Twitch doesn't support currently.
 ) %}
     marmalade
 {% end %}
-
-<!--
-{% project(
-    name="twitchid",
-    emoji="🏷️",
-    license="AGPL-3.0"
-) %}
-    twitchid
-{% end %}
--->
+</div>
 
 ## 🧰 Tools
 
 Utility applications, mostly for the command line.
 
+<div class="xl:grid grid-cols-2 gap-x-4">
 {% project(
     name="cargo-hatch",
     emoji="🐣",
@@ -168,11 +165,13 @@ took about 60% of my server's CPU and I wanted something more lean and fast.
 ) %}
     wholesum
 {% end %}
+</div>
 
 ## 🤖 Bots
 
 Chat bots, usually for **Discord**.
 
+<div class="xl:grid grid-cols-2 gap-x-4">
 {% project(
     name="octolicious",
     emoji="🍭",
@@ -190,11 +189,13 @@ Chat bots, usually for **Discord**.
 ) %}
     togglebot
 {% end %}
+</div>
 
 ## 🫖 Others
 
 Pretty much anything else that doesn't fit into the other categories.
 
+<div class="xl:grid grid-cols-2 gap-x-4">
 {% project(
     name="amelio",
     emoji="",
@@ -225,41 +226,4 @@ This app uses the latest Android features (at time of creation) and is completel
 🍵 Kotlin. Among the used libraries are AndroidX, Dagger, Moshi, Glide and others.
 
 {% end %}
-
-<!--
-## MarkDown Publisher
-
-[mdpub_home]: https://mdpub.dnaka91.rocks.com
-[mdpub_repo]: https://github.com/dnaka91/mdpub
-
-**[ 🦀 Rust • [Homepage][mdpub_home] • [Repository][mdpub_repo] ]**
-
-**M**ark**D**own **Pub**lisher (mdpub for short) helps republishing articles of personal blogs on
-different Markdown based logging platforms. It takes single Markdown files which contains the a
-post, then updates all links and lastly publishes the article again on Medium or dev.to or on both.
-
-This is a helpful tool for anyone who wants to publish posts on their own website but still want to
-get effects of publishing on other platforms to become more known.
--->
-
-<!--
-## CRC Check
-
-[crccheck_repo]: https://github.com/dnaka91/crccheck-rs
-
-**[ 🦀 Rust • [Repository][crccheck_repo] ]**
-
-CRC Check is a tool to validate CRC32 hashsum within file names. It scans the current directory for
-any files that contain a hash, calculates the hash from their content and compares both hashes to
-verify the content wasn't modified.
-
-It optionally can update the hash if it doesn't match.
--->
-
-<!--
-## Reciply
-
-[reciply_repo]: https://github.com/dnaka91/reciply
-
-**[ 🤖 Android • [Repository][reciply_repo] ]**
--->
+</div>

@@ -3,26 +3,19 @@
 {% import "macros.html" as macros %}
 
 {% block header %}
-<div class="columns is-centered">
-  <div class="column is-8">
-    <h1 class="title">
-      <span class="icon is-medium">
-        <i class="fa-solid fa-fw {{ config.extra.taxonomy_icons[taxonomy.name] }}"></i>
-      </span>
-      &nbsp;
-      {{ taxonomy.name | capitalize }}
-    </h1>
-  </div>
-</div>
+<h1 class="flex flex-row gap-x-4 items-center text-4xl">
+  {{ macros::icon(name=config.extra.taxonomy_icons[taxonomy.name], class="w-8 h-8") }}
+  {{ taxonomy.name | capitalize }}
+</h1>
 {% endblock header %}
 
 {% block content %}
-{% for term in terms %}
-  <div class="columns is-centered">
-    <div class="column is-8">
+<div class="my-8 prose prose-zinc dark:prose-invert">
+  {% for term in terms %}
+    <div>
       <a href="{{ term.permalink | safe }}">{{ term.name }}</a>
       ({{ term.pages | length }})
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
+</div>
 {% endblock content %}

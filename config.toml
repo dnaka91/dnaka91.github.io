@@ -6,7 +6,7 @@ description = "Dominik Nakamura's personal website"
 
 default_language = "en"
 
-compile_sass = true
+compile_sass = false
 minify_html = true
 
 generate_feed = true
@@ -36,8 +36,8 @@ social = [
 ]
 
 [extra.taxonomy_icons]
-tags = "fa-tags"
-categories = "fa-folder-open"
+tags = "tag"
+categories = "folder-open"
 
 [translations]
 subtitle = "Backend Developer in Go, Rust and Kotlin"

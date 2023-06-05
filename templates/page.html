@@ -55,76 +55,60 @@
 {% endblock meta %}
 
 {% block header %}
-<div class="columns is-centered">
-  <div class="column is-8">
-    <h1 class="title">
-      {% if page.extra.icon %}
-        <span class="icon is-medium">
-          <i class="fa-solid fa-fw fa-{{ page.extra.icon }}"></i>
-        </span>
-        &nbsp;
-      {% endif %}
-      {{ page.title }}
-    </h1>
-  </div>
-</div>
+<h1 class="flex flex-row gap-x-4 items-center text-4xl">
+  {% if page.extra.icon %}
+  {{ macros::icon(name=page.extra.icon, class="w-8 h-8") }}
+  {% endif %}
+  {{ page.title }}
+</h1>
 
 {% if page.description %}
-  <div class="columns is-centered">
-    <div class="column is-8">
-      <span class="subtitle">{{ page.description }}</span>
-    </div>
-  </div>
-{% endif %}
-
-{% if not page.extra.no_reading_time %}
-<div class="columns is-centered is-vcentered">
-  <div class="column is-offset-1 is-2 is-3-tablet">
-    <span class="subtitle">
-      <span class="icon is-medium">
-        <i class="fa-solid fa-fw fa-clock"></i>
-      </span>
-      Reading time
-    </span>
-  </div>
-  <div class="column is-6 is-5-tablet">
-    <div class="tags">
-      <span class="tag is-white is-medium" href="#">{{ macros::duration(ts=page.reading_time) }}</span>
-    </div>
-  </div>
+<div class="mt-4 text-lg dark:text-zinc-300">
+  {{ page.description }}
 </div>
 {% endif %}
 
-{% for kind, values in page.taxonomies %}
-  <div class="columns is-centered is-vcentered">
-    <div class="column is-offset-1 is-2 is-3-tablet">
-      <span class="subtitle">
-        <span class="icon is-medium">
-          <i class="fa-solid fa-fw {{ macros::taxo_icon(t=kind) }}"></i>
-        </span>
-        {{ kind | title }}
-      </span>
+<div class="flex flex-col gap-y-2 my-4">
+  {% if not page.extra.no_reading_time %}
+  <div class="flex flex-row gap-x-2 items-center">
+    <div class="flex flex-row gap-x-2 w-40">
+      {{ macros::icon(name="clock") }}
+      Reading time
     </div>
-    <div class="column is-6 is-5-tablet">
-      <div class="tags">
-        {% for value in values %}
-          <a class="tag is-dark is-medium" href="{{ get_taxonomy_url(kind=kind, name=value) | safe }}">{{ value }}</a>
-        {% endfor %}
-      </div>
+    <div class="py-1 px-2 rounded-md bg-zinc-300 dark:bg-zinc-700">
+      {{ macros::duration(ts=page.reading_time) }}
     </div>
   </div>
-{% endfor %}
+  {% endif %}
+
+  {% for kind, values in page.taxonomies %}
+    <div class="flex flex-row gap-x-2 items-center">
+      <div class="flex flex-row gap-x-2 w-40">
+        {{ macros::icon(name=macros::taxo_icon(t=kind)) }}
+        {{ kind | title }}
+      </div>
+      {% for value in values %}
+        <a class="py-1 px-2 rounded-md hover:underline bg-zinc-300 dark:bg-zinc-700" href="{{ get_taxonomy_url(kind=kind, name=value) | safe }}">
+          {{ value }}
+        </a>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
 {% endblock header %}
 
 {% block content %}
-<div class="columns is-centered">
-  <div class="content column is-8">
-    {% if page.extra.toc %}
-      <h2>Table of contents</h2>
-      {{ macros::toc(headers=page.toc) }}
-    {% endif %}
+{% set prose_a = "print:prose-a:no-underline hover:prose-a:text-blue-500" %}
+{% set prose_blockquote = "prose-blockquote:border-zinc-400 dark:prose-blockquote:border-zinc-600" %}
+{% set prose_code = "prose-code:before:content-none prose-code:after:content-none prose-code:bg-zinc-300 prose-code:py-0.5 prose-code:px-1 prose-code:rounded-sm dark:prose-code:bg-zinc-700" %}
+{% set prose_li = "marker:prose-li:text-zinc-600 prose-li:my-0 dark:marker:prose-li:text-zinc-400" %}
+{% set prose_ul = "prose-ul:my-0" %}
+<div class="my-8 max-w-none prose prose-zinc dark:prose-invert print:prose-sm {{ prose_a }} {{ prose_blockquote }} {{ prose_code }} {{ prose_li }} {{ prose_ul }}">
+  {% if page.extra.toc %}
+    <h2>Table of contents</h2>
+    {{ macros::toc(headers=page.toc) }}
+  {% endif %}
 
-    {{ page.content | safe }}
-  </div>
+  {{ page.content | safe }}
 </div>
 {% endblock content %}
