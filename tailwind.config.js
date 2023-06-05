@@ -5,8 +5,12 @@ module.exports = {
   content: ["./templates/**/*.html","./content/**/*.md"],
   theme: {
     container: {
-      center: true,
-      padding: '2rem'
+      padding: {
+        DEFAULT: "2rem",
+        lg: "4rem",
+        xl: "6rem",
+        "2xl": "8rem",
+      },
     },
     extend: {
       fontFamily: {
