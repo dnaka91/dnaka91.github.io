@@ -1,10 +1,11 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Dominik Nakamura",
+  "short_name": "Dominik Nakamura",
+  "description": "Dominik Nakamura's personal website",
   "icons": [
     {
       "src": "/images/favicon.svg",
-      "sizes": "192x192",
+      "sizes": "any",
       "type": "image/svg"
     }
   ],
