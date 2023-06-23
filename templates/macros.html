@@ -1,12 +1,12 @@
 {% macro title_or_last(component) %}
   {% set name = component.components | last %}
   {{ component.title | default(value=name) | capitalize }}
-{% endmacro title_or_last %}
+{% endmacro %}
 
 {% macro format_date(date, lang) %}
   {% set date_format = trans(key="date_format", lang=lang) %}
   {{ date | date(format=date_format) }}
-{% endmacro format_date %}
+{% endmacro %}
 
 {% macro toc(headers) %}
   <ul>
@@ -19,7 +19,7 @@
       </li>
     {% endfor %}
   </ul>
-{% endmacro toc %}
+{% endmacro %}
 
 {% macro taxo_icon(t) %}
   {%- if t == "tags" -%}
@@ -29,7 +29,7 @@
   {%- else -%}
     {{ "" }}
   {%- endif -%}
-{% endmacro taxo_icon %}
+{% endmacro %}
 
 {% macro duration(ts) %}
   {% if ts >= 60 %}
@@ -38,7 +38,7 @@
   {% if ts%60 >= 1 %}
     {{ ts%60 | round(method="floor") }} minute{% if ts%60 >= 2 %}s{% endif %}
   {% endif %}
-{% endmacro duration %}
+{% endmacro %}
 
 {% macro icon(name, class="w-6 h-6") %}
   {% if name == "chevron-down" %}
