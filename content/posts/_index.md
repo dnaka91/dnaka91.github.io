@@ -1,4 +1,4 @@
 +++
 sort_by = "date"
-insert_anchor_links = "heading"
+insert_anchor_links = "left"
 +++
