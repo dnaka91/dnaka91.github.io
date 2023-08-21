@@ -11,15 +11,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: yarn
-      - name: Install Yarn packages
-        run: yarn install
+          cache: pnpm
+      - name: Install Pnpm packages
+        run: pnpm install
       - name: Generate CSS
-        run: yarn run build
+        run: pnpm run build
       - name: Install Zola
         run: docker pull ghcr.io/getzola/zola:v${ZOLA_VERSION}
       - name: Build website
