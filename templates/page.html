@@ -100,13 +100,16 @@
 {% block content %}
 {% set prose_a = "print:prose-a:no-underline hover:prose-a:text-blue-500" %}
 {% set prose_blockquote = "prose-blockquote:border-zinc-400 dark:prose-blockquote:border-zinc-600" %}
-{% set prose_code = "prose-code:before:content-none prose-code:after:content-none prose-code:bg-zinc-300 prose-code:py-0.5 prose-code:px-1 prose-code:rounded-sm dark:prose-code:bg-zinc-700" %}
+{% set prose_code = "prose-code:before:content-none prose-code:after:content-none prose-code:text-rose-500 prose-code:bg-zinc-300 prose-code:py-0.5 prose-code:px-1 prose-code:rounded-sm dark:prose-code:bg-zinc-700" %}
+{% set prose_headings = "print:prose-headings:no-underline prose-headings:underline prose-headings:underline-offset-4 prose-headings:decoration-2 prose-headings:decoration-sky-500" %}
 {% set prose_li = "marker:prose-li:text-zinc-600 prose-li:my-0 dark:marker:prose-li:text-zinc-400" %}
 {% set prose_ul = "prose-ul:my-0" %}
-<div class="my-8 max-w-none prose prose-zinc dark:prose-invert print:prose-sm {{ prose_a }} {{ prose_blockquote }} {{ prose_code }} {{ prose_li }} {{ prose_ul }}">
+<div class="my-8 max-w-none prose prose-zinc dark:prose-invert print:prose-sm {{ prose_a }} {{ prose_blockquote }} {{ prose_code }} {{ prose_headings }} {{ prose_li }} {{ prose_ul }}">
   {% if page.extra.toc %}
-    <h2>Table of contents</h2>
-    {{ macros::toc(headers=page.toc) }}
+    <div class="print:hidden">
+      <h2>Table of contents</h2>
+      {{ macros::toc(headers=page.toc) }}
+    </div>
   {% endif %}
 
   {{ page.content | safe }}

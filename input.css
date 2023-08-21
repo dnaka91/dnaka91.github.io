@@ -2,24 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aleo - Regular */
-@font-face {
-  font-family: "Aleo";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/Aleo-Regular.woff2") format("woff2");
-}
-
-/* Aleo - Bold */
-@font-face {
-  font-family: "Aleo";
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/Aleo-Bold.woff2") format("woff2");
-}
-
 /* Fira Code - Regular */
 @font-face {
   font-family: "Fira Code";
@@ -38,29 +20,65 @@
   src: url("/fonts/FiraCode-Bold.woff2") format("woff2");
 }
 
+/* Roboto - Regular */
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Regular.woff2") format("woff2");
+}
+
+/* Roboto - Bold */
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/Roboto-Bold.woff2") format("woff2");
+}
+
+/* Roboto Slab - Regular */
+@font-face {
+  font-family: "Roboto Slab";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/RobotoSlab-Regular.woff2") format("woff2");
+}
+
+/* Roboto Slab - Bold */
+@font-face {
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/RobotoSlab-Bold.woff2") format("woff2");
+}
+
 @layer components {
     .prose pre {
         line-height: 1.5;
     }
 
     .prose pre code {
-        background: none;
-        padding-left: 0;
+        @apply text-gray-500 bg-transparent pl-0;
     }
+
     .prose pre table {
-        margin: theme(margin.0);
+        @apply m-0 text-sm;
+        line-height: 1.5;
     }
 
     .prose pre tr {
-        border-width: theme(borderWidth.0);
+        @apply border-0;
     }
 
     .prose pre td {
-        padding: theme(padding.0);
-        padding-left: theme(padding.2);
+        @apply p-0 pl-2;
     }
 
     .prose pre td:first-child {
-        padding-left: theme(padding.0);
+        @apply pl-0;
     }
 }

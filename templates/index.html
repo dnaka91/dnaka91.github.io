@@ -4,7 +4,7 @@
 
 {% block main_section %}
 <div class="fixed top-0 right-0 bottom-0 left-0 w-screen h-screen bg-gradient-to-br -z-10 from-zinc-200 to-zinc-500 dark:from-zinc-600 dark:to-zinc-900"></div>
-<section class="flex flex-col grow flex-auto gap-y-2 justify-center items-center py-4 text-center lg:gap-y-6">
+<section class="flex flex-col flex-auto gap-y-2 justify-center items-center py-4 text-center lg:gap-y-6 grow">
   <img class="mb-8 rounded-3xl" src="{{ get_url(path='images/avatar.webp') | safe }}" alt="avatar" width="160" height="160">
   <div class="text-4xl font-bold">
     {{ config.title }}

@@ -2,7 +2,10 @@ const defaultTheme = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./templates/**/*.html","./content/**/*.md"],
+  content: {
+  	relative: true,
+    files: ["./templates/**/*.html","./content/**/*.md"],
+  },
   theme: {
     container: {
       padding: {
@@ -14,8 +17,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        "serif": ["Aleo", ...defaultTheme.fontFamily.sans],
-        "mono": ["Fira Code", ...defaultTheme.fontFamily.mono],
+        "sans": ['"Roboto"', ...defaultTheme.fontFamily.sans],
+        "serif": ['"Roboto Slab"', ...defaultTheme.fontFamily.serif],
+        "mono": ['"Fira Code"', ...defaultTheme.fontFamily.mono],
       },
     },
   },
