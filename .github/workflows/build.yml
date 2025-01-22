@@ -11,25 +11,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-      - name: Install Pnpm packages
-        run: pnpm install
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install packages
+        run: bun install
       - name: Generate CSS
-        run: pnpm run build
+        run: bun run build
       - name: Install Zola
         run: docker pull ghcr.io/getzola/zola:v${ZOLA_VERSION}
       - name: Build website
         run: docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app ghcr.io/getzola/zola:v${ZOLA_VERSION} build
       - name: Publish
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: static

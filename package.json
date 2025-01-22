@@ -7,11 +7,11 @@
   "private": true,
   "scripts": {
     "tailwind": "tailwindcss -i ./input.css -o ./static/style.css",
-    "watch": "pnpm run tailwind --watch",
-    "build": "pnpm run tailwind --minify"
+    "watch": "bun run tailwind --watch",
+    "build": "bun run tailwind --minify"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "tailwindcss": "^3.4.16"
+    "@tailwindcss/typography": "^0.5.16",
+    "tailwindcss": "^3.4.17"
   }
 }
