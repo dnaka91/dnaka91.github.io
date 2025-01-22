@@ -9,7 +9,7 @@ default_language = "en"
 compile_sass = false
 minify_html = true
 
-generate_feed = true
+generate_feeds = true
 
 taxonomies = [
     { name = "tags", feed = true },
@@ -53,7 +53,7 @@ taxonomy_categories = "Categories"
 title = "Dominik Nakamura"
 description = "Dominik Nakamuras persönliche Webseite"
 
-generate_feed = false
+generate_feeds = false
 
 taxonomies = [
     { name = "tags", feed = true },
